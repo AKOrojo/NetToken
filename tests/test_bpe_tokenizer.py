@@ -1,7 +1,7 @@
 # Test the corrected tokenizer
-from src.nettokken.bpe.byte_level_field_aware_tokenizer import ByteLevelFieldAwareTokenizer
+from src.nettokken.bpe.byte_level_field_aware_tokenizer import OptimizedBPETrainer
 
-tokenizer = ByteLevelFieldAwareTokenizer()
+tokenizer = OptimizedBPETrainer()
 
 # Train on some PCAP files
 training_files = ['../data/test.pcap']
@@ -15,7 +15,7 @@ print(f"Round-trip test: {test_bytes == decoded}")
 
 # Save and reload
 tokenizer.save_trained_data('vocab.json', 'merges.json')
-new_tokenizer = ByteLevelFieldAwareTokenizer('vocab.json', 'merges.json')
+new_tokenizer = OptimizedBPETrainer('vocab.json', 'merges.json')
 
 # Tokenize a PCAP
 tokens = new_tokenizer.tokenize_pcap('../data/test.pcap')

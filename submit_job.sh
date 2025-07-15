@@ -11,6 +11,7 @@
 
 # Load required modules (adjust based on your HPC setup)
 source /home/orojoa/NetToken/.venv/bin/activate
+cd $PBS_O_WORKDIR
 
 # Set up environment
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
